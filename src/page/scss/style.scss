@@ -1,0 +1,11 @@
+$body-color: red;
+
+body {
+  color: $body-color;
+}
+.content{
+    padding: 90px;
+    .lifeSpan{
+        color:$body-color;
+    }
+}
