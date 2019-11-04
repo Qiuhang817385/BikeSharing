@@ -1,14 +1,17 @@
-$color: rgb(245, 116, 116);
+@import "./default.scss";
 
 .container {
-
     .nav-left {
         height: calc(100vh);
         color: #fff;
         background-color: #001529;
     }
 
-    .main {}
+    .main {
+        position: relative;
+        height: calc(100vh);
+        background-color: $colorL;
+    }
 
     .content {
         position: relative;

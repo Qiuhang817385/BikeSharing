@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavLeft from "./components/NavLeft";
+import Home from './page/home';
 import { Row, Col } from "antd";
 import "./style/common.scss"
 export default class Admin extends Component {
   render() {
-  
+
     return (
       <div>
         <Row className="container">
@@ -15,7 +16,9 @@ export default class Admin extends Component {
           </Col>
           <Col span="20" className="main">
             <Header />
-            <Row className="content">Content</Row>
+            <Row className="content">
+              <Home />
+            </Row>
             <Footer />
           </Col>
         </Row>
