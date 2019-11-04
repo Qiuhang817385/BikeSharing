@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            /* line-height: 110px; */
+        }
+
+        .wrapper img {
+            height: 35px;
+            vertical-align: middle;
+        }
+
+        .wrapper h2 {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="../../../public/logo192.png" alt="">
+        <h2>文字</h2>
+    </div>
+
+
+    <script>
+        let data = [{
+                title: '首页',
+                key: '/home'
+            },
+            {
+                title: 'UI',
+                key: '/ui',
+                children: [{
+                        title: '按钮',
+                        key: '/ui/buttons',
+                    },
+                    {
+                        title: '弹框',
+                        key: '/ui/modals',
+                    },
+                    {
+                        title: 'Loading',
+                        key: '/ui/loadings',
+                    },
+                    {
+                        title: '通知提醒',
+                        key: '/ui/notification',
+                    },
+                    {
+                        title: '全局Message',
+                        key: '/ui/messages',
+                    },
+                    {
+                        title: 'Tab页签',
+                        key: '/ui/tabs',
+                    },
+                    {
+                        title: '图片画廊',
+                        key: '/ui/gallery',
+                    },
+                    {
+                        title: '轮播图',
+                        key: '/ui/carousel',
+                    }
+                ]
+            },
+            {
+                title: '表单',
+                key: '/form',
+                children: [{
+                        title: '登录',
+                        key: '/form/login',
+                    },
+                    {
+                        title: '注册',
+                        key: '/form/reg',
+                    }
+                ]
+            },
+            {
+                title: '表格',
+                key: '/table',
+                children: [{
+                        title: '基础表格',
+                        key: '/table/basic',
+                    },
+                    {
+                        title: '高级表格',
+                        key: '/table/high',
+                    }
+                ]
+            },
+            {
+                title: '富文本',
+                key: '/rich'
+            },
+            {
+                title: '城市管理',
+                key: '/city'
+            },
+            {
+                title: '订单管理',
+                key: '/order',
+                btnList: [{
+                        title: '订单详情',
+                        key: 'detail'
+                    },
+                    {
+                        title: '结束订单',
+                        key: 'finish'
+                    }
+                ]
+            },
+            {
+                title: '员工管理',
+                key: '/user'
+            },
+            {
+                title: '车辆地图',
+                key: '/bikeMap'
+            },
+            {
+                title: '图标',
+                key: '/charts',
+                children: [{
+                        title: '柱形图',
+                        key: '/charts/bar'
+                    },
+                    {
+                        title: '饼图',
+                        key: '/charts/pie'
+                    },
+                    {
+                        title: '折线图',
+                        key: '/charts/line'
+                    },
+                ]
+            },
+            {
+                title: '权限设置',
+                key: '/permission'
+            },
+        ];
+        let str = '';
+        renderMenu = (data) => {
+            return data.map((item) => {
+                if (item.children) {
+                    // 如果有,首先返回的是一级菜单,在一级菜单里面调用,再返回二级菜单
+                    str += "<li><a>" + item.title + "</a>" + this.renderMenu(item
+                        .children) + "</li>"
+                } else {
+                    str += "<ul><li><a href='javascript:;'>" + item.title + "</a></li></ul>";
+                }
+                return str;
+            })
+           
+        }
+
+        let tree = renderMenu(data);
+        // document.write("<ul>" + + "</ul>");
+        console.log(tree);
+    </script>
+</body>
+
+</html>
