@@ -6,12 +6,13 @@ import './index.css';
 // import Admin from './Admin';
 // import Home from './page/route_demo/route1/Home';
 // import Home from './page/route_demo/VIVO/Home';
-import Router from './page/route_demo/VIVO2/Router';
+// import Router from './page/route_demo/VIVO2/Router';
 // import Router from './page/route_demo/route2/router';
 // import Router from './page/route_demo/route3/router';
+import Routers from './router'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Router />, document.getElementById('root'));
+ReactDOM.render(<Routers />, document.getElementById('root'));
 // ReactDOM.render(<Router />, document.getElementById('root'));
 // ReactDOM.render(<Admin />, document.getElementById('root'));
 

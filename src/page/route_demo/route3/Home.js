@@ -14,6 +14,9 @@ export default class Home extends Component {
                     <li>
                         <Link to="/about">About2</Link>
                     </li>
+                    <li>
+                        <Link to="/imooc">imooc</Link>
+                    </li>
                 </ul>
                 {this.props.children}
             </div>

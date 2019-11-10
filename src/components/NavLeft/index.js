@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import menuConfig from '../../config/menuConfig'
 import { Menu } from 'antd';
-import "./index.scss"
+import "./index.scss";
+import {Link} from 'react-router-dom';
 const { SubMenu } = Menu;
 function handleClick(e) {
   console.log('click', e);
@@ -26,7 +27,11 @@ export default class index extends Component {
           </SubMenu>
         )
       }
-      return <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
+      return <Menu.Item title={item.title} key={item.key}>
+        <Link to={item.key}>
+        {item.title}
+        </Link>
+        </Menu.Item>
 
     })
   }
