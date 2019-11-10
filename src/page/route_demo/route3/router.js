@@ -16,6 +16,7 @@ export default class router extends Component {
                     {/* <Route exact={true} path="/" component={Main}></Route> */}
                     {/* main嵌套一个子路由 */}
                     {/* <Route exact={true} path="/" render={()=> */}
+                    {/* 二级路由不能加exact */}
                     {/* 只有先进来,才能匹配到嵌套的子路由 */}
                     <Route path="/main" render={() => {
                         // 需要有返回值

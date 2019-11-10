@@ -4,7 +4,7 @@ export default class Main extends Component {
     render() {
         return (
             <div>
-                Main3
+                
                 <br/>
                 <Link to="/main/test-id">嵌套路由1</Link>
                 <br/>
