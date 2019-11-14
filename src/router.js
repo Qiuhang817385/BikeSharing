@@ -10,7 +10,8 @@ import Loadings from './page/ui/loadings';
 import Notification from './page/ui/notification';
 import Messages from './page/ui/message';
 import Tab from './page/ui/tab';
-import Gallery from './page/ui/gallery'
+import Gallery from './page/ui/gallery';
+import Carousels from './page/ui/carousel';
 export default class Routers extends Component {
     render() {
         return (
@@ -30,6 +31,7 @@ export default class Routers extends Component {
                                         <Route path='/ui/messages' component={Messages}/>
                                         <Route path='/ui/tabs' component={Tab}/>
                                         <Route path='/ui/gallery' component={Gallery}/>
+                                        <Route path='/ui/carousel' component={Carousels}/>
                                         
                                         <Route component={NoMatch} />
                                     </Switch>
