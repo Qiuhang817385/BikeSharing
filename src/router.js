@@ -12,6 +12,7 @@ import Messages from './page/ui/message';
 import Tab from './page/ui/tab';
 import Gallery from './page/ui/gallery';
 import Carousels from './page/ui/carousel';
+import LoginForm from './page/form/login';
 export default class Routers extends Component {
     render() {
         return (
@@ -32,6 +33,7 @@ export default class Routers extends Component {
                                         <Route path='/ui/tabs' component={Tab}/>
                                         <Route path='/ui/gallery' component={Gallery}/>
                                         <Route path='/ui/carousel' component={Carousels}/>
+                                        <Route path='/form/login' component={LoginForm}/>
                                         
                                         <Route component={NoMatch} />
                                     </Switch>
