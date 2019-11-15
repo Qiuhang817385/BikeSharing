@@ -18,7 +18,7 @@ class RegisterForm extends Component {
     handelSubmit = () => {
         // 获取表单当中所有的值
         let userInfo = this.props.form.getFieldsValue();
-        //    console.log(userInfo);
+        console.log(JSON.stringify(userInfo));
         // {userName: "123", pwd: "12323"}
         // 表单验证
         this.props.form.validateFields((err, values) => {
@@ -244,6 +244,7 @@ class RegisterForm extends Component {
                                 })(
                                     // 实战的话需要上传的接口,服务端需要把上传的接口给我们
                                     <Upload
+                                       
                                         listType="picture-card"
                                         showUploadList={false}
                                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -255,16 +256,16 @@ class RegisterForm extends Component {
                             }
                         </FormItem>
                         {/* 协议*/}
-                        <FormItem   {...offsetLayout}>
+                        <FormItem   {...offsetLayout} >
                             {
-                                getFieldDecorator('userImg', {
+                                getFieldDecorator('xieyi', {
                                     rules: []
                                 })(
-
+                                    <Checkbox>已经阅读协议</Checkbox>
                                 )
                             }
                         </FormItem>
-                        <FormItem {...offsetLayout}>
+                        <FormItem {...offsetLayout} >
                             <Button type="primary"
                                 onClick={this.handelSubmit}
                             >登录</Button>
