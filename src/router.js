@@ -13,6 +13,8 @@ import Tab from './page/ui/tab';
 import Gallery from './page/ui/gallery';
 import Carousels from './page/ui/carousel';
 import LoginForm from './page/form/login';
+import RegisterForm from './page/form/register';
+
 export default class Routers extends Component {
     render() {
         return (
@@ -34,6 +36,7 @@ export default class Routers extends Component {
                                         <Route path='/ui/gallery' component={Gallery}/>
                                         <Route path='/ui/carousel' component={Carousels}/>
                                         <Route path='/form/login' component={LoginForm}/>
+                                        <Route path='/form/reg' component={RegisterForm}/>
                                         
                                         <Route component={NoMatch} />
                                     </Switch>
