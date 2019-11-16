@@ -38,6 +38,7 @@ class LoginForm extends Component {
                 </Card>
                 <Card title="登录水平表单">
                     {/* 默认就是水平的 */}
+                    {/*  */}
                     <Form style={{ width: 300 }}>
                         <FormItem>
                             {

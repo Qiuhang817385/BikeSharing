@@ -195,7 +195,7 @@ class RegisterForm extends Component {
                         {/* 生日 生日生日生日生日生日生日生日*/}
                         <FormItem label="生日"  {...formItemLayout}>
                             {
-                                getFieldDecorator('birth', {
+                                getFieldDecorator('birthday', {
                                     initialValue: moment('2019-11-15'),
                                     //需要对moment进行转换
                                     rules: []
