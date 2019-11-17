@@ -1,0 +1,39 @@
+{
+    "code": 0,
+    "msg": "出错了",
+    "result": [
+        {
+            "id": "0",
+            "userName": "qiu",
+            "sex": "1",
+            "state": "1",
+            "interest": "1",
+            "birthday": "2000-01-01",
+            "address": "秦皇岛",
+            "time": "09:00"
+        },
+        {
+            "id": "1",
+            "userName": "qiuiququi",
+            "sex": "0",
+            "state": "1",
+            "interest": "1",
+            "birthday": "2000-01-01",
+            "address": "海港区",
+            "time": "09:00"
+        },
+        {
+            "id": "0",
+            "userName": "qiu212",
+            "sex": "1",
+            "state": "1",
+            "interest": "1",
+            "birthday": "2000-01-01",
+            "address": "秦港区",
+            "time": "09:00"
+        }
+    ],
+    "page": 1,
+    "page_size": 10,
+    "total_count": 30
+}

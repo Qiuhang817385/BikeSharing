@@ -1,5 +1,8 @@
-import JsonP from 'jsonp'
+import JsonP from 'jsonp';
+import axios from 'axios';
+import { Modal } from 'antd'
 export default class Axios {
+    // 封装JSONP
     static jsonp(options) {
         return new Promise((resolve, reject) => {
             JsonP(options.url, {
@@ -13,5 +16,51 @@ export default class Axios {
                 }
             })
         })
+    }
+    // 封装API
+    static ajax(options) {
+        // 使用loading
+        let loading;
+        //如果有的接口不希望loading,做判断
+        if (options.data && options.data.isShowLoading !== false) {
+            loading = document.getElementById('ajaxLoading');
+            loading.style.display ='block'
+        }
+
+        return new Promise((resolve, reject) => {
+            // axios的api写法
+            axios({
+                url: options.url,
+                method: 'get',
+                baseURL: '',
+                timeout: 5000,
+                params: (options.data && options.data.params) || '',
+
+            }).then((res) => {
+
+
+                if (options.data && options.data.isShowLoading !== false) {
+                    loading = document.getElementById('ajaxLoading');
+                    loading.style.display ='none'
+                }
+
+
+                if (res.status === 200) {
+                    let response = res.data;
+                    if (response.code === 0) {
+                        // resolve(response.result)
+                        resolve(response)
+                    } else {
+                        Modal.info({
+                            title: '提示',
+                            content: response.msg
+                        })
+                    }
+                } else {
+                    reject(res.data);
+                }
+            })
+        });
+
     }
 }
