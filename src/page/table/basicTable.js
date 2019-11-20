@@ -48,48 +48,64 @@ export default class BasicTable extends Component {
             dataSource
         })
         this.request();
+        dataSource.map((item,index)=>{
+               return item.key = index;
+        })
     }
     request = () => {
-      /*   axios.get('/api/tableList')
-            .then((res) => {
-                if (res.status === 200 && res.data.code === 0) {
-                    let result = res.data.result;
-                    // result是一个数组
-                    // this.setState(()=>{
-                    //     return {
-                    //         dataSource2:result
-                    //     }
-                    // })
-                    this.setState(() => ({ dataSource2: [...result] }))
-                    // for (const key in result) {
-                    //    console.log(result[key]);
-                    // }
-                    console.log(result);
-                    console.log(typeof res.status);
-                }
-            })
-            .catch(() => { alert('error') }) 
-            
-            使用直接使用的方式
-            */
-           /* 
-           使用封装的方式
+        /*   axios.get('/api/tableList')
+              .then((res) => {
+                  if (res.status === 200 && res.data.code === 0) {
+                      let result = res.data.result;
+                      // result是一个数组
+                      // this.setState(()=>{
+                      //     return {
+                      //         dataSource2:result
+                      //     }
+                      // })
+                      this.setState(() => ({ dataSource2: [...result] }))
+                      // for (const key in result) {
+                      //    console.log(result[key]);
+                      // }
+                      console.log(result);
+                      console.log(typeof res.status);
+                  }
+              })
+              .catch(() => { alert('error') }) 
+              
+              使用直接使用的方式
+              */
+        /* 
+        使用封装的方式
 
-            */
-           axios.ajax({
-               url:'/api/tableList',
-               data:{
-                   params:{
+         */
+        axios.ajax({
+            url: '/api/tableList',
+            data: {
+                params: {
                     //    tableList?page=1
-                       page:1
-                   },
+                    page: 1
+                },
                 //    isShowLoading:false
-               }
-           }).then((res)=>{
-                if(res.code===0){
-                    this.setState(() => ({ dataSource2: [...res.result] }))
-                }
-           })
+            }
+        }).then((res) => {
+            if (res.code === 0) {
+                res.result.map((item,index)=>{
+                  return   item.key = index;
+
+                })
+                this.setState(() => ({ dataSource2: [...res.result] }))
+            }
+        })
+    }
+
+    onRowClick=(record,index)=>{
+        let selectKey = [index];
+        this.setState({
+            selectedRowKeys:selectKey,
+            selectedItem:record
+        })
+
     }
     render() {
         // 变量定义在外面和定义在里面其实一样,需要引用的方式不一样
@@ -106,19 +122,19 @@ export default class BasicTable extends Component {
             }, {
                 title: '性别',
                 dataIndex: 'sex',
-                render(sex){
-                    return sex===1?'男':'女'
+                render(sex) {
+                    return sex === 1 ? '男' : '女'
                 }
             }, {
                 title: '状态',
                 dataIndex: 'state',
-                render(state){
-                    let config ={
-                        '1':'这是1',
-                        '2':'zheshi2',
-                        '3':'这是3',
-                        '4':'这是4',
-                        '5':'这是5'
+                render(state) {
+                    let config = {
+                        '1': '这是1',
+                        '2': 'zheshi2',
+                        '3': '这是3',
+                        '4': '这是4',
+                        '5': '这是5'
                     }
                     return config[state];
                 }
@@ -136,6 +152,14 @@ export default class BasicTable extends Component {
                 dataIndex: 'time'
             }
         ]
+
+        const {selectedRowKeys} = this.state;
+        const rowSelection = {
+            type: 'radio',
+            selectedRowKeys
+        }
+
+
         return (
             <div>
                 <Card title="基础表格">
@@ -156,11 +180,35 @@ export default class BasicTable extends Component {
                     >
                     </Table>
                 </Card>
-
+                {/* 在表格当中进行按钮等组件的添加 */}
+                {/* 定义一个对象 rowSelection={rowSelection} */}
+                {/* onrow事件控制点击某一行,然后获取数据 */}
                 <Card title="data">
-
+                    <Table
+                      onRow={(record,index) => {
+                        return {
+                            // 这是点击表格的时候才触发的事件
+                            onClick :()=>{
+                                this.onRowClick (record,index)
+                            }
+                            // 点击行
+                        //   onDoubleClick: event => {},
+                        //   onContextMenu: event => {},
+                        //   onMouseEnter: event => {}, // 鼠标移入行
+                        //   onMouseLeave: event => {},
+                        };
+                      }}
+                        rowSelection={rowSelection}
+                        bordered
+                        pagination={false}
+                        dataSource={this.state.dataSource2}
+                        columns={columns}
+                        // 定义列的字段名
+                    >
+                    </Table>
                 </Card>
             </div>
+            // 工程的组件化开发,
         )
     }
 }

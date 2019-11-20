@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        div{
-            color: rgb(250, 131, 94);
+        body{
+            height: 1200px;
         }
     </style>
 </head>
+
 <body>
-        
+    <script>
+        window.onscroll = function () {
+            let top = document.body.scrollTop || document.documentElement.scrollTop;
+            console.log(top);
+        }
+    </script>
 </body>
+
 </html>
