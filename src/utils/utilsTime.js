@@ -4,5 +4,14 @@ export default {
         let time = new Date(date);
         return time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + "   " + 
         time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+    },
+    pagination(data,callback){
+        let page = {
+            onChange:(current)=>{
+                callback(current)
+            },
+            current:data.result.page
+        }
+
     }
 }

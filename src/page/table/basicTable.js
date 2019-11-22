@@ -210,33 +210,20 @@ export default class BasicTable extends Component {
 
         return (< div >
             <Card title="基础表格" >
-                <Table bordered pagination={
-                    false
-                }
-                    dataSource={
-                        this.state.dataSource
-                    }
+                <Table bordered pagination={false}
+                    dataSource={this.state.dataSource}
                     columns={columns} >
                 </Table>
             </ Card >
             <Card title="动态数据渲染表格" >
-                <Table bordered pagination={
-                    false
-                }
-                    dataSource={
-                        this.state.dataSource2
-                    }
-                    columns={
-                        columns
-                    } >
+                <Table bordered pagination={false}
+                    dataSource={this.state.dataSource2}
+                    columns={columns} >
                 </Table>
-            </Card > {
-                /* 在表格当中进行按钮等组件的添加 */
-            } {
-                /* 定义一个对象 rowSelection={rowSelection} */
-            } {
-                /* onrow事件控制点击某一行,然后获取数据 */
-            }
+            </Card >
+            { /* 在表格当中进行按钮等组件的添加 */}
+            {  /* 定义一个对象 rowSelection={rowSelection} */}
+            { /* onrow事件控制点击某一行,然后获取数据 */}
             <Card title="data1" >
                 <Table onRow={
                     (record, index) => {
@@ -253,46 +240,43 @@ export default class BasicTable extends Component {
                         };
                     }
                 }
-                    rowSelection={
-                        rowSelection
-                    }
-                    bordered pagination={
-                        false
-                    }
-                    dataSource={
-                        this.state.dataSource2
-                    }
-                    columns={
-                        columns
-                    }
+                    rowSelection={rowSelection}
+                    bordered 
+                    pagination={false}
+                    dataSource={this.state.dataSource2}
+                    columns={columns}
                 // 定义列的字段名
                 >
                 </Table>
             </Card >
             <Card title="data2" >
                 <div>
-                    <Button onClick={
-                        this.handleDelete
-                    } > 删除 </Button> </div >
+                    <Button onClick={this.handleDelete} > 删除 </Button> </div >
                 <Table
                     //   onRow={(record,index) => {
 
                     //   }}
-                    rowSelection={
-                        rowCheckSelection
-                    }
-                    bordered pagination={
-                        false
-                    }
-                    dataSource={
-                        this.state.dataSource2
-                    }
-                    columns={
-                        columns
-                    }
+                    rowSelection={rowCheckSelection}
+                    bordered 
+                    pagination={false}
+                    dataSource={this.state.dataSource2}
+                    columns={columns}
                 // 定义列的字段名
                 >
-                </Table> </Card >
+                </Table>
+            </Card >
+            // 分页插件
+            <Card title="分页插件" >
+                <div>
+                    <Button onClick={this.handleDelete} > 删除 </Button> </div >
+                <Table
+                    bordered 
+                    pagination={false}
+                    dataSource={this.state.dataSource2}
+                    columns={columns}
+                >
+                </Table>
+            </Card >
         </div>
             // 工程的组件化开发,
         )
