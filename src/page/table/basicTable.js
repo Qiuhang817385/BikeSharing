@@ -10,9 +10,14 @@ import {
 } from 'antd';
 // import axios from 'axios';
 import axios from '../../axios'; //封装的方式
+import utilsTime from '../../utils/utilsTime';
 export default class BasicTable extends Component {
     state = {
-        dataSource2: []
+        dataSource2: [],
+        dataSourcePage: [],
+    }
+    params = {
+        page:1
     }
     //  state = {
     //     y:4827
@@ -60,6 +65,8 @@ export default class BasicTable extends Component {
         })
     }
     request = () => {
+        // 这步是干嘛的
+        let _this = this;
         /*   axios.get('/api/tableList')
               .then((res) => {
                   if (res.status === 200 && res.data.code === 0) {
@@ -86,6 +93,7 @@ export default class BasicTable extends Component {
         使用封装的方式
 
          */
+        // 请求数据1
         axios.ajax({
             url: '/api/tableList',
             data: {
@@ -105,6 +113,32 @@ export default class BasicTable extends Component {
                     dataSource2: [...res.result],
                     selectedRowKeys: [],
                     selectedRows: null
+                }))
+            }
+        })
+        // 请求数据2
+        axios.ajax({
+            url: '/api/tableListPagenation',
+            data: {
+                params: {
+                    //    tableList?page=1
+                    page: this.params.page
+                },
+                //    isShowLoading:false
+            }
+        }).then((res) => {
+            if (res.code === 0) {
+                res.result.list.map((item, index) => {
+                    return item.key = index;
+                })
+                this.setState(() => ({
+                    dataSourcePage: [...res.result.list],
+                    selectedRowKeys: [],
+                    selectedRows: null,
+                    pagination:utilsTime.pagination(res,(current)=>{
+                        _this.params.page = current;
+                        this.request();
+                    })
                 }))
             }
         })
@@ -271,8 +305,8 @@ export default class BasicTable extends Component {
                     <Button onClick={this.handleDelete} > 删除 </Button> </div >
                 <Table
                     bordered 
-                    pagination={false}
-                    dataSource={this.state.dataSource2}
+                    pagination={this.state.pagination}
+                    dataSource={this.state.dataSourcePage}
                     columns={columns}
                 >
                 </Table>

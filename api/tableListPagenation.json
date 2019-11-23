@@ -1,0 +1,81 @@
+{
+    "code": 0,
+    "msg": "出错了",
+    "result": {
+        "list":[
+            {
+                "id": "0",
+                "userName": "分页1",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦皇岛",
+                "time": "09:00"
+            },
+            {
+                "id": "1",
+                "userName": "分页2",
+                "sex": "0",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "海港区",
+                "time": "09:00"
+            },
+            {
+                "id": "2",
+                "userName": "qiu2分页12",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦港区",
+                "time": "09:00"
+            },
+            {
+                "id": "3",
+                "userName": "qiu2分页12",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦港区",
+                "time": "09:00"
+            },
+            {
+                "id": "4",
+                "userName": "qiu2分页12",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦港区",
+                "time": "09:00"
+            },
+            {
+                "id": "5",
+                "userName": "qiu2分页12",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦港区",
+                "time": "09:00"
+            },
+            {
+                "id": "6",
+                "userName": "qiu2分页12",
+                "sex": "1",
+                "state": "1",
+                "interest": "1",
+                "birthday": "2000-01-01",
+                "address": "秦港区",
+                "time": "09:00"
+            }
+        ]
+    },
+    "page": 1,
+    "page_size": 4,
+    "total": 30
+}

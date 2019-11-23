@@ -10,8 +10,17 @@ export default {
             onChange:(current)=>{
                 callback(current)
             },
-            current:data.result.page
+            current:data.result.page,
+            pageSize:data.result.page_size,
+            total:data.result.total,
+            // 用于显示数据的总量和当前的数据
+            showTotal:()=>{
+                return `共${data.result.total}条`
+            },
+            // 是否快速跳转到某页
+            showQuickJumper:true
         }
+        return page;
 
     }
 }

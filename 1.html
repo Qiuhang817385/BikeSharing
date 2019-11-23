@@ -7,17 +7,74 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
+        body {
             height: 1200px;
         }
     </style>
 </head>
 
 <body>
+
+    <table>
+        <tr>
+            <td><span class="product">水果</span></td>
+        </tr>
+        <tr>
+            <td><span class="product">蜜桃</span></td>
+        </tr>
+        <tr>
+            <td><span class="product">西瓜</span></td>
+        </tr>
+        <tr>
+            <td><span class="product">牛奶</span></td>
+        </tr>
+    </table>
+
+
+    <div id="shopCart">
+
+    </div>
+
     <script>
-        window.onscroll = function () {
-            let top = document.body.scrollTop || document.documentElement.scrollTop;
-            console.log(top);
+        let Pro = [];
+        let Num = [];
+        let shopCart = document.getElementById('shopCart');
+
+        let add = function (str) {
+            let y = -1;
+            for (let i = 0; i < Pro.length; i++) {
+                if (Pro[i] === str) {
+                    y = i;
+                }
+            }
+            if (y === -1) {
+                Pro.push(str);
+                Num.push(1);
+            } else {
+                Num[y]++;
+            }
+        }
+
+        console.log(Pro, Num);
+        let table = document.getElementsByTagName('table');
+        table[0].onclick = function (e) {
+            // shopCart.removeChild();
+            shopCart.childElementCount = 0;
+            let exp = /product/ig;
+            if (exp.exec(e.target.className)) {
+                add(e.target.innerText);
+                while (shopCart.hasChildNodes()) {
+                    shopCart.removeChild(shopCart.firstChild);
+                }
+                for (let i = 0; i < Pro.length; i++) {
+                    let spanPro = document.createElement('span');
+                    let spanNum = document.createElement('span');
+                    spanPro.innerText = Pro[i] + " ";
+                    spanNum.innerHTML = Num[i] + '<br>';
+                    spanPro.appendChild(spanNum);
+                    shopCart.appendChild(spanPro);
+                }
+            }
         }
     </script>
 </body>
