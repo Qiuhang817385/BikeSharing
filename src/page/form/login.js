@@ -13,7 +13,6 @@ class LoginForm extends Component {
                 message.success(`${userInfo.userName},${userInfo.pwd}`)
             }
         })
-
     }
     render() {
         // 自动封装的
@@ -26,7 +25,6 @@ class LoginForm extends Component {
                         <FormItem>
                             <Input placeholder="输入用户名"></Input>
                             {/* 获取值的话,常规操作是绑定onchange事件 */}
-
                         </FormItem>
                         <FormItem>
                             <Input placeholder="输入密码"></Input>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button, Table, Form, Select } from 'antd';
+import { Card, Button, Table, Form, Select, Modal, message } from 'antd';
 import axios from './../../axios/index';
 import utilsTime from './../../utils/utilsTime';
 const FormItem = Form.Item;
@@ -7,7 +7,9 @@ const Option = Select.Option;
 
 export default class City extends Component {
     state = {
-        list: []
+        list: [],
+        // 弹框默认隐藏掉
+        isShowOpenCity: false
     }
     params = {
         page: 1
@@ -38,8 +40,31 @@ export default class City extends Component {
             })
         })
     }
+    // 开通城市
     handleOpenCity = () => {
-
+        this.setState({
+            isShowOpenCity: true
+        })
+    }
+    // 城市开通提交
+    handleSubmit = () => {
+        let cityInfo =  this.cityForm.props.form.getFieldsValue()
+        // console.log(cityInfo.city_id);
+        axios.ajax({
+            url:'/city/open',
+            data:{
+                params:cityInfo
+            }
+        }).then((res)=>{
+            if(res.code === 0){
+                message.success("开通成功");
+                this.setState({
+                    isShowOpenCity:false
+                })
+                // 可能请求列表发生变化,状态,数据条数
+                this.requestList();
+            }
+        })
     }
     render() {
         const columns = [
@@ -52,6 +77,9 @@ export default class City extends Component {
             }, {
                 title: '用车模式',
                 dataIndex: 'mode',
+                render(mode){
+                    return mode===1?'指定停车点模式':'禁停区模式';
+                }
             }, {
                 title: '营运模式',
                 dataIndex: 'op_mode',
@@ -83,7 +111,7 @@ export default class City extends Component {
                 <Card>
                     <FilterForm />
                 </Card>
-                <Card style={{marginTop:10}}>
+                <Card style={{ marginTop: 10 }}>
                     <Button type="primary" onClick={this.handleOpenCity}>开通城市</Button>
                 </Card>
                 <div className="content-wrap">
@@ -93,8 +121,25 @@ export default class City extends Component {
                     >
                     </Table>
                 </div>
+                <Modal
+                    title="开通城市"
+                    visible={this.state.isShowOpenCity}
+                    onCancel={() => {
+                        this.setState({
+                            isShowOpenCity: false
+                        })
+                    }}
+                    onOk={this.handleSubmit}
 
-               
+                >
+                //  等同于vue里面的ref 
+                    <OpenCityForm   wrappedComponentRef={(inst)=>{
+                        // 把获取到的当前对象存取到this.cityForm当中
+                        this.cityForm = inst;
+
+                    }}></OpenCityForm>
+                </Modal>
+
             </div>
         )
     }
@@ -170,3 +215,68 @@ class FilterForm extends React.Component {
     }
 }
 FilterForm = Form.create({})(FilterForm);
+
+
+// 城市开通
+class OpenCityForm extends Component {
+    render() {
+        const formItemLayout = {
+            labelCol: {
+                span: 5
+            },
+            wrapperCol: { span: 19 }
+        }
+        const { getFieldDecorator } = this.props.form;
+        return (
+            // {}结构成一个属性值
+            <Form
+                layout="horizontal"
+            >
+
+                <FormItem label="选择城市" {...formItemLayout}>
+                    {
+                        getFieldDecorator('city_id', {
+                            initialValue: '1'
+                        })(
+                            <Select style={{ width: 100 }}>
+                                <Option value="">全部</Option>
+                                <Option value="1">北京市</Option>
+                                <Option value="2">天津市</Option>
+                                <Option value="3">深圳市</Option>
+                            </Select>
+                        )
+                    }
+
+                </FormItem>
+                <FormItem label="营业模式" {...formItemLayout}>
+                    {
+                        getFieldDecorator('op_mode', {
+                            initialValue: '1'
+                        })(
+                            <Select style={{ width: 100 }}>
+                                <Option value="1">自营</Option>
+                                <Option value="2">加盟</Option>
+                            </Select>
+                        )
+                    }
+
+                </FormItem>
+                <FormItem label="用车模式" {...formItemLayout}>
+                    {
+                        getFieldDecorator('use_mode', {
+                            initialValue: "1"
+                        })(
+                            <Select style={{ width: 100 }}>
+                                 <Option value="">全部</Option>
+                                <Option value="1">指定停车点模式</Option>
+                                <Option value="2">禁停区模式</Option>
+                            </Select>
+                        )
+                    }
+
+                </FormItem>
+            </Form>
+        )
+    }
+}
+OpenCityForm = Form.create({})(OpenCityForm);
