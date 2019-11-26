@@ -16,7 +16,8 @@ import LoginForm from './page/form/login';
 import RegisterForm from './page/form/register';
 import BasicTable from './page/table/basicTable';
 import HighTable from './page/table/HighTable';
-import City from './page/city/index'
+import City from './page/city/index';
+import Order from './page/order/index'
 
 export default class Routers extends Component {
     render() {
@@ -43,6 +44,7 @@ export default class Routers extends Component {
                                         <Route path='/table/basic' component = {BasicTable}/>
                                         <Route path='/table/high' component = {HighTable}/>
                                         <Route path="/city" component={City} />
+                                        <Route path="/order" component={Order} />
                                         <Route component={NoMatch} />
                                     </Switch>
                                 </Admin>
