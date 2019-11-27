@@ -18,7 +18,7 @@ import BasicTable from './page/table/basicTable';
 import HighTable from './page/table/HighTable';
 import City from './page/city/index';
 import Order from './page/order/index'
-
+import Common from './Common'
 export default class Routers extends Component {
     render() {
         return (
@@ -27,22 +27,29 @@ export default class Routers extends Component {
                 <App>
                     <Switch>
                         <Route path='/login' component={Login} />
+                        <Route path="/common" render={() => {
+                            return <Common>
+                                <Route path="/common/order/detail/:orderId" component={Login} />
+                            </Common>
+                        }
+                        }
+                        />
                         <Route path='/' render={() => {
                             return (
                                 <Admin>
                                     <Switch>
                                         <Route path='/ui/buttons' component={Buttons} />
-                                        <Route path='/ui/modals' component={Modals}/>
-                                        <Route path='/ui/loadings' component={Loadings}/>
-                                        <Route path='/ui/notification' component={Notification}/>
-                                        <Route path='/ui/messages' component={Messages}/>
-                                        <Route path='/ui/tabs' component={Tab}/>
-                                        <Route path='/ui/gallery' component={Gallery}/>
-                                        <Route path='/ui/carousel' component={Carousels}/>
-                                        <Route path='/form/login' component={LoginForm}/>
-                                        <Route path='/form/reg' component={RegisterForm}/>
-                                        <Route path='/table/basic' component = {BasicTable}/>
-                                        <Route path='/table/high' component = {HighTable}/>
+                                        <Route path='/ui/modals' component={Modals} />
+                                        <Route path='/ui/loadings' component={Loadings} />
+                                        <Route path='/ui/notification' component={Notification} />
+                                        <Route path='/ui/messages' component={Messages} />
+                                        <Route path='/ui/tabs' component={Tab} />
+                                        <Route path='/ui/gallery' component={Gallery} />
+                                        <Route path='/ui/carousel' component={Carousels} />
+                                        <Route path='/form/login' component={LoginForm} />
+                                        <Route path='/form/reg' component={RegisterForm} />
+                                        <Route path='/table/basic' component={BasicTable} />
+                                        <Route path='/table/high' component={HighTable} />
                                         <Route path="/city" component={City} />
                                         <Route path="/order" component={Order} />
                                         <Route component={NoMatch} />

@@ -1,0 +1,9 @@
+.simple-page .header-top {
+  background: #1890ff;
+  color: #ffffff;
+}
+.simple-page .ant-form,
+.simple-page .ant-col-12,
+.simple-page .weather {
+  display: none;
+}

@@ -1,5 +1,6 @@
 @import "./default.scss";
 @import './loading.scss';
+
 .container {
     .nav-left {
         height: calc(100vh);
@@ -19,11 +20,24 @@
         padding: 20px;
     }
 }
-.content-wrap{
+
+.content-wrap {
     background: #fff;
     border: 1px solid #e8e8e8;
     margin-top: -3px;
-    .ant-atble-wrapper{
+    .ant-atble-wrapper {
         margin: 0 -2px 0 -1px;
     }
 }
+.simple-page{
+    .header-top{
+      background:#1890ff;
+      color:#ffffff;
+    }
+    .ant-form,
+    .ant-col-12,
+    .weather{
+      display:none;
+    }
+  }
+

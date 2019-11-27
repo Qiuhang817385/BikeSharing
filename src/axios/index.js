@@ -28,6 +28,9 @@ export default class Axios {
         }
 
         return new Promise((resolve, reject) => {
+
+
+
             // axios的api写法
             axios({
                 url: options.url,
@@ -35,16 +38,16 @@ export default class Axios {
                 baseURL: '',
                 timeout: 5000,
                 params: (options.data && options.data.params) || '',
-
+                // then开始
             }).then((res) => {
 
-
+                // 进度条
                 if (options.data && options.data.isShowLoading !== false) {
                     loading = document.getElementById('ajaxLoading');
                     loading.style.display ='none'
                 }
-
-
+                // 进度条
+                // 状态判断
                 if (res.status === 200) {
                     let response = res.data;
                     if (response.code === 0) {
@@ -59,7 +62,13 @@ export default class Axios {
                 } else {
                     reject(res.data);
                 }
+                // 状态判断
             })
+            // then结束
+
+
+
+
         });
 
     }
