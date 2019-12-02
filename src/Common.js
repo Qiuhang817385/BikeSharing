@@ -13,6 +13,7 @@ export default class Common extends Component {
         <Row className = "content">
           {this.props.children}
           
+          
         </Row>
       </div>
     );
