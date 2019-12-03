@@ -13,6 +13,8 @@ export default class Common extends Component {
         <Row className = "content">
           {this.props.children}
           
+          {/* longnocom */}
+          
           
         </Row>
       </div>
