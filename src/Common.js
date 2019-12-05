@@ -12,6 +12,8 @@ export default class Common extends Component {
         </Row>
         <Row className = "content">
           {this.props.children}
+
+          
           
           {/* longnocom */}
           
